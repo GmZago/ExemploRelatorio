@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ExemploRelatorio.Models.Consulta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Medico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paciente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataConsulta)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.MedicoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paciente.NomePaciente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataConsulta)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ConsultaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ConsultaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ConsultaId">Delete</a>  |
+                <a asp-action="Imprimir" target="_blank" asp-route-id="@item.ConsultaId">Imprimir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
